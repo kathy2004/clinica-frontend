@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3000';
+const BASE_URL = 'https://clinica-api-hdz1.onrender.com';
 
 function authHeaders() {
   const token = localStorage.getItem('token');
