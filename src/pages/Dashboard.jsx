@@ -9,7 +9,8 @@ function formatarHora(dataIso) {
 }
 
 function formatarMoeda(valor) {
-  return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  const numero = Number(valor) || 0;
+  return numero.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 }
 
 const CORES_STATUS = {
@@ -54,22 +55,31 @@ export default function Dashboard() {
             marginBottom: 32,
           }}
         >
-          <div style={estiloCard}>
-            <p style={{ color: cores.cinzaMedio, fontSize: 13, margin: '0 0 6px' }}>
-              Agendamentos hoje
-            </p>
-            <p style={{ color: cores.preto, fontSize: 26, fontWeight: 700, margin: 0 }}>
-              {resumo.totalAgendamentosHoje}
-            </p>
-          </div>
-          <div style={estiloCard}>
+                   <div style={estiloCard}>
             <p style={{ color: cores.cinzaMedio, fontSize: 13, margin: '0 0 6px' }}>
               Faturamento hoje
             </p>
             <p style={{ color: cores.preto, fontSize: 22, fontWeight: 700, margin: 0 }}>
               {formatarMoeda(resumo.faturamentoHoje)}
             </p>
+            <p style={{ color: cores.cinzaMedio, fontSize: 12, margin: '6px 0 0' }}>
+              Clínica: {formatarMoeda(resumo.faturamentoClinicaHoje)} · Profissionais:{' '}
+              {formatarMoeda(resumo.faturamentoProfissionalHoje)}
+            </p>
           </div>
+          <div style={estiloCard}>
+            <p style={{ color: cores.cinzaMedio, fontSize: 13, margin: '0 0 6px' }}>
+              Faturamento do mês
+            </p>
+            <p style={{ color: cores.preto, fontSize: 22, fontWeight: 700, margin: 0 }}>
+              {formatarMoeda(resumo.faturamentoMes)}
+            </p>
+            <p style={{ color: cores.cinzaMedio, fontSize: 12, margin: '6px 0 0' }}>
+              Clínica: {formatarMoeda(resumo.faturamentoClinicaMes)} · Profissionais:{' '}
+              {formatarMoeda(resumo.faturamentoProfissionalMes)}
+            </p>
+          </div>
+
           <div style={estiloCard}>
             <p style={{ color: cores.cinzaMedio, fontSize: 13, margin: '0 0 6px' }}>
               Faturamento do mês

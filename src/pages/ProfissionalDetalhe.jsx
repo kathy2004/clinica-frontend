@@ -21,6 +21,8 @@ const dadosVazios = {
   cidade: '',
   telefone: '',
   cpf: '',
+  responsavelNome: '',
+  responsavelCpf: '',
 };
 
 export default function ProfissionalDetalhe() {
@@ -190,15 +192,30 @@ export default function ProfissionalDetalhe() {
                     style={{ ...estiloInput, flex: 1 }}
                   />
                 </div>
-                <input
+                                <input
                   placeholder="Cidade"
                   value={novoPaciente.cidade}
                   onChange={(e) => mudarCampo('cidade', e.target.value)}
                   style={estiloInput}
                 />
+
+                <p style={{ color: cores.cinzaMedio, fontSize: 13, margin: '12px 0 8px' }}>
+                  Se o paciente for menor de idade, preencha os dados do responsável:
+                </p>
+                <input
+                  placeholder="Nome do responsável"
+                  value={novoPaciente.responsavelNome}
+                  onChange={(e) => mudarCampo('responsavelNome', e.target.value)}
+                  style={estiloInput}
+                />
+                <input
+                  placeholder="CPF do responsável"
+                  value={novoPaciente.responsavelCpf}
+                  onChange={(e) => mudarCampo('responsavelCpf', e.target.value)}
+                  style={estiloInput}
+                />
               </>
             )}
-
             <button type="submit" style={estiloBotaoPrimario}>
               Cadastrar
             </button>

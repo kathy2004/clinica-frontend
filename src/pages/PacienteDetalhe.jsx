@@ -22,7 +22,7 @@ export default function PacienteDetalhe() {
     carregar();
   }, [id]);
 
-  function iniciarEdicao() {
+    function iniciarEdicao() {
     setDadosEdicao({
       nome: paciente.nome || '',
       cpf: paciente.cpf || '',
@@ -33,6 +33,8 @@ export default function PacienteDetalhe() {
       numero: paciente.numero || '',
       cidade: paciente.cidade || '',
       telefone: paciente.telefone || '',
+      responsavelNome: paciente.responsavelNome || '',
+      responsavelCpf: paciente.responsavelCpf || '',
     });
     setEditando(true);
   }
@@ -87,9 +89,15 @@ export default function PacienteDetalhe() {
               <p style={{ margin: '4px 0', color: cores.preto }}>
                 <strong>Cidade:</strong> {paciente.cidade || '-'}
               </p>
-              <p style={{ margin: '4px 0', color: cores.preto }}>
+                            <p style={{ margin: '4px 0', color: cores.preto }}>
                 <strong>Telefone:</strong> {paciente.telefone || '-'}
               </p>
+              {paciente.responsavelNome && (
+                <p style={{ margin: '4px 0', color: cores.preto }}>
+                  <strong>Responsável:</strong> {paciente.responsavelNome}
+                  {paciente.responsavelCpf ? ` — CPF: ${paciente.responsavelCpf}` : ''}
+                </p>
+              )}
               <button
                 onClick={iniciarEdicao}
                 style={{ ...estiloBotaoPrimario, marginTop: 16, fontSize: 13, padding: '8px 16px' }}
@@ -155,10 +163,22 @@ export default function PacienteDetalhe() {
                 onChange={(e) => mudarCampo('cidade', e.target.value)}
                 style={estiloInput}
               />
-              <input
+                            <input
                 placeholder="Telefone"
                 value={dadosEdicao.telefone}
                 onChange={(e) => mudarCampo('telefone', e.target.value)}
+                style={estiloInput}
+              />
+              <input
+                placeholder="Nome do responsável (se menor de idade)"
+                value={dadosEdicao.responsavelNome}
+                onChange={(e) => mudarCampo('responsavelNome', e.target.value)}
+                style={estiloInput}
+              />
+              <input
+                placeholder="CPF do responsável"
+                value={dadosEdicao.responsavelCpf}
+                onChange={(e) => mudarCampo('responsavelCpf', e.target.value)}
                 style={estiloInput}
               />
               <div style={{ display: 'flex', gap: 8 }}>
