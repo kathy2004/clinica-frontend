@@ -55,7 +55,16 @@ export default function Dashboard() {
             marginBottom: 32,
           }}
         >
-                   <div style={estiloCard}>
+          <div style={estiloCard}>
+            <p style={{ color: cores.cinzaMedio, fontSize: 13, margin: '0 0 6px' }}>
+              Agendamentos hoje
+            </p>
+            <p style={{ color: cores.preto, fontSize: 26, fontWeight: 700, margin: 0 }}>
+              {resumo.totalAgendamentosHoje}
+            </p>
+          </div>
+
+          <div style={estiloCard}>
             <p style={{ color: cores.cinzaMedio, fontSize: 13, margin: '0 0 6px' }}>
               Faturamento hoje
             </p>
@@ -67,6 +76,7 @@ export default function Dashboard() {
               {formatarMoeda(resumo.faturamentoProfissionalHoje)}
             </p>
           </div>
+
           <div style={estiloCard}>
             <p style={{ color: cores.cinzaMedio, fontSize: 13, margin: '0 0 6px' }}>
               Faturamento do mês
@@ -80,14 +90,6 @@ export default function Dashboard() {
             </p>
           </div>
 
-          <div style={estiloCard}>
-            <p style={{ color: cores.cinzaMedio, fontSize: 13, margin: '0 0 6px' }}>
-              Faturamento do mês
-            </p>
-            <p style={{ color: cores.preto, fontSize: 22, fontWeight: 700, margin: 0 }}>
-              {formatarMoeda(resumo.faturamentoMes)}
-            </p>
-          </div>
           <div style={estiloCard}>
             <p style={{ color: cores.cinzaMedio, fontSize: 13, margin: '0 0 6px' }}>
               Pacientes cadastrados
